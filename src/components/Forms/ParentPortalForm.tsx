@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { User, Mail, Phone, Key, Eye, EyeOff } from 'lucide-react';
+import { User, Mail, Phone, Key, Eye, EyeOff, Zap, Shield, Star } from 'lucide-react';
 
 const parentPortalSchema = z.object({
   studentId: z.string().min(1, 'Student ID is required'),
@@ -88,29 +88,43 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
 
   if (isSignInMode) {
     return (
-      <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm">
-        <Card className="w-full max-w-md glass-effect border-0 shadow-elegant rounded-2xl">
-          <CardHeader className="text-center pb-4 sm:pb-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <User className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
+      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-hero relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-10 w-80 h-80 bg-emerald/10 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
+        </div>
+
+        <Card className="relative w-full max-w-lg glass-effect border-0 shadow-elegant rounded-4xl overflow-hidden">
+          <div className="h-2 bg-gradient-to-r from-emerald to-cyan"></div>
+          
+          <CardHeader className="text-center p-8 bg-gradient-to-br from-emerald/5 to-cyan/5">
+            <div className="w-20 h-20 bg-gradient-to-r from-emerald to-teal rounded-3xl flex items-center justify-center mx-auto mb-6 animate-glow">
+              <User className="w-10 h-10 text-white" />
             </div>
-            <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground">Sign In</CardTitle>
-            <p className="text-muted-foreground mt-2 text-sm sm:text-base">Access your parent portal</p>
+            
+            <CardTitle className="text-3xl font-bold text-foreground mb-4">
+              Parent <span className="text-gradient">Portal</span>
+            </CardTitle>
+            
+            <p className="text-muted-foreground">
+              Access your personalized dashboard
+            </p>
           </CardHeader>
           
-          <CardContent className="p-4 sm:p-6 pt-0">
+          <CardContent className="p-8">
             <Form {...signInForm}>
-              <form onSubmit={signInForm.handleSubmit(onSignInSubmit)} className="space-y-4 sm:space-y-6">
+              <form onSubmit={signInForm.handleSubmit(onSignInSubmit)} className="space-y-6">
                 <FormField
                   control={signInForm.control}
                   name="studentId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Student ID</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Student ID</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="22G149" 
-                          className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
+                          className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
                           {...field} 
                         />
                       </FormControl>
@@ -124,21 +138,21 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Password</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Password</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Input 
                             type={showPassword ? "text" : "password"}
                             placeholder="password123" 
-                            className="rounded-xl border-input/50 glass-effect pr-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect border-0 rounded-2xl h-14 pr-12 text-base focus:ring-2 focus:ring-emerald/50"
                             {...field} 
                           />
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
                       </FormControl>
@@ -148,24 +162,27 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                 />
 
                 {signInError && (
-                  <p className="text-destructive text-sm text-center">{signInError}</p>
+                  <div className="glass-effect rounded-2xl p-4 border border-destructive/20 bg-destructive/10">
+                    <p className="text-destructive text-sm text-center">{signInError}</p>
+                  </div>
                 )}
 
                 <Button 
                   type="submit" 
-                  className="w-full btn-primary text-base sm:text-lg py-3 sm:py-4 h-auto rounded-xl hover:shadow-glow transition-all duration-300 hover:scale-105"
+                  className="w-full btn-primary text-lg py-4 h-auto rounded-2xl hover:shadow-glow transition-all duration-300 hover:scale-105"
                 >
+                  <Shield className="w-5 h-5 mr-2" />
                   Sign In
                 </Button>
               </form>
             </Form>
 
-            <div className="mt-6 text-center">
+            <div className="mt-8 text-center">
               <p className="text-sm text-muted-foreground">
                 Don't have an account?{' '}
                 <button 
                   onClick={() => setIsSignInMode(false)}
-                  className="text-primary hover:underline font-medium"
+                  className="text-emerald hover:text-teal font-medium transition-colors"
                 >
                   Create Account
                 </button>
@@ -178,30 +195,47 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm">
-      <Card className="w-full max-w-md sm:max-w-lg glass-effect border-0 shadow-elegant rounded-2xl">
-        <CardHeader className="text-center pb-4 sm:pb-6">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-            <User className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-hero relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-emerald/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
+      </div>
+
+      <Card className="relative w-full max-w-2xl glass-effect border-0 shadow-elegant rounded-4xl overflow-hidden">
+        <div className="h-2 bg-gradient-to-r from-emerald via-teal to-cyan"></div>
+        
+        <CardHeader className="text-center p-8 bg-gradient-to-br from-emerald/5 to-cyan/5">
+          <div className="w-20 h-20 bg-gradient-to-r from-emerald to-teal rounded-3xl flex items-center justify-center mx-auto mb-6 animate-glow">
+            <User className="w-10 h-10 text-white" />
           </div>
-          <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground">Create Parent Account</CardTitle>
-          <p className="text-muted-foreground mt-2 text-sm sm:text-base">Set up your parent portal access</p>
+          
+          <CardTitle className="text-3xl font-bold text-foreground mb-4">
+            Create Parent <span className="text-gradient">Account</span>
+          </CardTitle>
+          
+          <p className="text-muted-foreground">
+            Set up your parent portal access
+          </p>
         </CardHeader>
         
-        <CardContent className="p-4 sm:p-6 pt-0">
+        <CardContent className="p-8">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              
+              {/* Account Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="studentId"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Student ID</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Student ID</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Enter student ID" 
-                          className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
+                          className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
                           {...field} 
                         />
                       </FormControl>
@@ -215,13 +249,13 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                   name="registrationCode"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Registration Code</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Registration Code</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Key className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                          <Key className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                           <Input 
                             placeholder="Enter code" 
-                            className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-emerald/50"
                             {...field} 
                           />
                         </div>
@@ -232,18 +266,19 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                 />
               </div>
 
+              {/* Personal Information */}
               <FormField
                 control={form.control}
                 name="parentName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-sm font-medium">Parent/Guardian Name</FormLabel>
+                    <FormLabel className="text-base font-medium text-foreground">Parent/Guardian Name</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                        <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                         <Input 
                           placeholder="Enter your full name" 
-                          className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                          className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
                           {...field} 
                         />
                       </div>
@@ -253,20 +288,21 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                 )}
               />
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Contact Details */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Email Address</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Email Address</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                          <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                           <Input 
                             type="email" 
                             placeholder="Enter email" 
-                            className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
                             {...field} 
                           />
                         </div>
@@ -281,14 +317,14 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                   name="phone"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Phone Number</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Phone Number</FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                          <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
                           <Input 
                             type="tel" 
                             placeholder="Enter phone" 
-                            className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
                             {...field} 
                           />
                         </div>
@@ -299,27 +335,28 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Password Fields */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <FormField
                   control={form.control}
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Password</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Password</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Input 
                             type={showPassword ? "text" : "password"}
                             placeholder="Create password" 
-                            className="rounded-xl border-input/50 glass-effect pr-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect border-0 rounded-2xl h-14 pr-12 text-base focus:ring-2 focus:ring-cyan/50"
                             {...field} 
                           />
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
                       </FormControl>
@@ -333,21 +370,21 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                   name="confirmPassword"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-sm font-medium">Confirm Password</FormLabel>
+                      <FormLabel className="text-base font-medium text-foreground">Confirm Password</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Input 
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="Confirm password" 
-                            className="rounded-xl border-input/50 glass-effect pr-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect border-0 rounded-2xl h-14 pr-12 text-base focus:ring-2 focus:ring-cyan/50"
                             {...field} 
                           />
                           <button
                             type="button"
                             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                           >
-                            {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                           </button>
                         </div>
                       </FormControl>
@@ -359,19 +396,20 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
 
               <Button 
                 type="submit" 
-                className="w-full btn-primary text-base sm:text-lg py-3 sm:py-4 h-auto rounded-xl hover:shadow-glow transition-all duration-300 hover:scale-105"
+                className="w-full btn-primary text-lg py-4 h-auto rounded-2xl hover:shadow-glow transition-all duration-300 hover:scale-105"
               >
+                <Star className="w-5 h-5 mr-2" />
                 Create Account
               </Button>
             </form>
           </Form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground">
               Already have an account?{' '}
               <button 
                 onClick={() => setIsSignInMode(true)}
-                className="text-primary hover:underline font-medium"
+                className="text-emerald hover:text-teal font-medium transition-colors"
               >
                 Sign In
               </button>
