@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Award, Globe, Building, Users, BookOpen, Target } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -45,30 +46,38 @@ const AboutPage: React.FC = () => {
   return (
     <div className="animate-fade-in pt-16">
       {/* Hero Section */}
-      <section className="bg-gradient-hero text-white py-20">
-        <div className="container mx-auto px-6">
+      <section className="hero-modern text-white py-20 relative">
+        <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 animate-glow">
               About PISES
             </h1>
             <p className="text-xl md:text-2xl text-white/90 mb-8 leading-relaxed">
               Pakistan International School (English Section) - Where Excellence Meets Innovation
             </p>
             <div className="grid md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">25+</div>
+              <div className="glass-effect p-6 rounded-2xl text-center">
+                <div className="text-4xl font-bold text-neon-teal mb-2">25+</div>
                 <div className="text-white/70">Years of Excellence</div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">1000+</div>
+              <div className="glass-effect p-6 rounded-2xl text-center">
+                <div className="text-4xl font-bold text-neon-green mb-2">1000+</div>
                 <div className="text-white/70">Students Graduated</div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-white mb-2">50+</div>
+              <div className="glass-effect p-6 rounded-2xl text-center">
+                <div className="text-4xl font-bold text-neon-cyan mb-2">50+</div>
                 <div className="text-white/70">Expert Faculty</div>
               </div>
             </div>
           </div>
+        </div>
+        
+        {/* Floating Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-4 h-4 bg-neon-teal/20 rounded-full animate-float"></div>
+          <div className="absolute top-40 right-20 w-6 h-6 bg-neon-green/15 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-40 left-20 w-3 h-3 bg-neon-cyan/25 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-20 right-10 w-2 h-2 bg-neon-aqua/30 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
         </div>
       </section>
 
@@ -76,9 +85,9 @@ const AboutPage: React.FC = () => {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            <Card className="feature-card bg-gradient-card border-0 shadow-card">
+            <Card className="glass-effect border-0 shadow-elegant">
               <CardContent className="p-8">
-                <h2 className="text-3xl font-bold text-foreground mb-6">Our Mission</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-6 text-gradient">Our Mission</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   To provide world-class education that nurtures critical thinking, creativity, and character development. 
                   We are committed to preparing our students to become global citizens who contribute positively to society.
@@ -86,9 +95,9 @@ const AboutPage: React.FC = () => {
               </CardContent>
             </Card>
 
-            <Card className="feature-card bg-gradient-card border-0 shadow-card">
+            <Card className="glass-effect border-0 shadow-elegant">
               <CardContent className="p-8">
-                <h2 className="text-3xl font-bold text-foreground mb-6">Our Vision</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-6 text-gradient">Our Vision</h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   To be the leading international school in Pakistan, recognized for academic excellence, innovative teaching, 
                   and developing students who are prepared to meet the challenges of the 21st century.
@@ -103,7 +112,7 @@ const AboutPage: React.FC = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-gradient">
               What Sets Us Apart
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -113,10 +122,10 @@ const AboutPage: React.FC = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="feature-card bg-card border-0 shadow-card">
+              <Card key={index} className="glass-effect border-0 shadow-elegant group hover:shadow-glow transition-all duration-500">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-6">
-                    <feature.icon className="w-8 h-8 text-primary-foreground" />
+                  <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-8 h-8 text-white" />
                   </div>
                   
                   <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -146,7 +155,7 @@ const AboutPage: React.FC = () => {
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-gradient">
               Our Core Values
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -157,7 +166,7 @@ const AboutPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {values.map((value, index) => (
               <div key={index} className="text-center group">
-                <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-glow transition-all duration-300">
+                <div className="w-20 h-20 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
                   <value.icon className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-foreground mb-4">
@@ -176,7 +185,7 @@ const AboutPage: React.FC = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-gradient">
               Our Journey
             </h2>
             <p className="text-xl text-muted-foreground">
@@ -194,10 +203,10 @@ const AboutPage: React.FC = () => {
               { year: '2023', title: 'Innovation Hub', description: 'Opened our new STEM and Innovation Center.' }
             ].map((milestone, index) => (
               <div key={index} className="flex items-center group">
-                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0 group-hover:shadow-glow transition-all duration-300">
+                <div className="w-20 h-20 glass-effect border-primary/30 rounded-full flex items-center justify-center text-primary font-bold text-lg flex-shrink-0 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110">
                   {milestone.year}
                 </div>
-                <div className="ml-8">
+                <div className="ml-8 glass-effect p-6 rounded-2xl flex-1">
                   <h3 className="text-xl font-bold text-foreground mb-2">
                     {milestone.title}
                   </h3>

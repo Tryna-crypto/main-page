@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { GraduationCap, BookOpen, Users, Award } from 'lucide-react';
 
@@ -44,10 +45,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
       <div className="text-center space-y-8 px-6">
         {/* Animated Logo */}
         <div className="relative">
-          <div className="w-24 h-24 bg-white/10 rounded-2xl flex items-center justify-center mx-auto animate-bounce-in">
-            <CurrentIcon className="w-12 h-12 text-white animate-glow" />
+          <div className="w-24 h-24 glass-effect rounded-2xl flex items-center justify-center mx-auto animate-bounce-in">
+            <CurrentIcon className="w-12 h-12 text-neon-teal animate-glow" />
           </div>
-          <div className="absolute -inset-4 bg-white/5 rounded-3xl animate-pulse"></div>
+          <div className="absolute -inset-4 glass-effect rounded-3xl animate-pulse opacity-50"></div>
         </div>
 
         {/* School Name */}
@@ -81,12 +82,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           </div>
         </div>
 
-        {/* Floating Elements */}
+        {/* Floating Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-float"></div>
-          <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-white/15 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-white/25 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-1/4 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-neon-teal/30 rounded-full animate-float"></div>
+          <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-neon-green/25 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/3 left-1/3 w-2 h-2 bg-neon-cyan/35 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-1/4 right-1/3 w-1 h-1 bg-neon-aqua/40 rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
         </div>
       </div>
     </div>
