@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,7 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { GraduationCap, User, Mail, Phone, Calendar, MapPin, FileText, Zap, Star, Heart } from 'lucide-react';
+import { GraduationCap, User, Mail, Phone, Calendar, MapPin, FileText } from 'lucide-react';
 
 const admissionSchema = z.object({
   // Student Information
@@ -83,57 +84,39 @@ const AdmissionForm = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 px-4 sm:px-6 lg:px-8 bg-gradient-hero relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-96 h-96 bg-emerald/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-20 right-10 w-80 h-80 bg-cyan/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '3s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-teal/5 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
-      </div>
-
-      <div className="relative max-w-5xl mx-auto">
-        <Card className="glass-effect border-0 shadow-elegant rounded-4xl overflow-hidden">
-          {/* Header */}
-          <div className="h-2 bg-gradient-to-r from-emerald via-teal to-cyan"></div>
-          
-          <CardHeader className="text-center p-12 bg-gradient-to-br from-emerald/5 to-cyan/5">
-            <div className="w-24 h-24 bg-gradient-to-r from-emerald to-teal rounded-4xl flex items-center justify-center mx-auto mb-8 animate-glow">
-              <GraduationCap className="w-12 h-12 text-white" />
+    <div className="min-h-screen py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm">
+      <div className="max-w-4xl mx-auto">
+        <Card className="glass-effect border-0 shadow-elegant rounded-2xl">
+          <CardHeader className="text-center pb-4 sm:pb-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+              <GraduationCap className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
             </div>
-            
-            <CardTitle className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-              Admission <span className="text-gradient">Application</span>
-            </CardTitle>
-            
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Join the PISES family - Start your journey of excellence today
-            </p>
+            <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground">Admission Application</CardTitle>
+            <p className="text-muted-foreground mt-2 text-sm sm:text-base">Join the PISES family - Start your application today</p>
           </CardHeader>
           
-          <CardContent className="p-8 sm:p-12">
+          <CardContent className="p-4 sm:p-6 pt-0">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-8">
                 
                 {/* Student Information Section */}
-                <div className="space-y-8">
-                  <div className="flex items-center space-x-3 pb-4 border-b border-gradient">
-                    <div className="w-12 h-12 bg-emerald rounded-2xl flex items-center justify-center">
-                      <User className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">Student Information</h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-center space-x-2 pb-2 border-b border-border/50">
+                    <User className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">Student Information</h3>
                   </div>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">First Name *</FormLabel>
+                          <FormLabel className="text-sm font-medium">First Name *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter first name" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -147,11 +130,11 @@ const AdmissionForm = () => {
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Last Name *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Last Name *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter last name" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -161,19 +144,19 @@ const AdmissionForm = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <FormField
                       control={form.control}
                       name="dateOfBirth"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Date of Birth *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Date of Birth *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Calendar className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                              <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                               <Input 
                                 type="date"
-                                className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-emerald/50"
+                                className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
                                 {...field} 
                               />
                             </div>
@@ -188,10 +171,10 @@ const AdmissionForm = () => {
                       name="gender"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Gender *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Gender *</FormLabel>
                           <FormControl>
                             <select 
-                              className="flex h-14 w-full rounded-2xl glass-effect border-0 px-4 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald/50 disabled:cursor-not-allowed disabled:opacity-50"
+                              className="flex h-10 sm:h-12 w-full rounded-xl border border-input/50 bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 glass-effect"
                               {...field}
                             >
                               <option value="">Select Gender</option>
@@ -210,11 +193,11 @@ const AdmissionForm = () => {
                       name="nationality"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Nationality *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Nationality *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter nationality" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -226,28 +209,26 @@ const AdmissionForm = () => {
                 </div>
 
                 {/* Contact Information Section */}
-                <div className="space-y-8">
-                  <div className="flex items-center space-x-3 pb-4 border-b border-gradient">
-                    <div className="w-12 h-12 bg-teal rounded-2xl flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">Contact Information</h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-center space-x-2 pb-2 border-b border-border/50">
+                    <Mail className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">Contact Information</h3>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Email Address *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Email Address *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                               <Input 
                                 type="email"
                                 placeholder="Enter email address" 
-                                className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
+                                className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
                                 {...field} 
                               />
                             </div>
@@ -262,14 +243,14 @@ const AdmissionForm = () => {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Phone Number *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Phone Number *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                               <Input 
                                 type="tel"
                                 placeholder="Enter phone number" 
-                                className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
+                                className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
                                 {...field} 
                               />
                             </div>
@@ -285,13 +266,13 @@ const AdmissionForm = () => {
                     name="address"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-medium text-foreground">Address *</FormLabel>
+                        <FormLabel className="text-sm font-medium">Address *</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <MapPin className="absolute left-4 top-4 text-muted-foreground w-5 h-5" />
+                            <MapPin className="absolute left-3 top-3 text-muted-foreground w-4 h-4" />
                             <Textarea 
                               placeholder="Enter complete address" 
-                              className="glass-effect border-0 rounded-2xl pl-12 text-base min-h-[100px] focus:ring-2 focus:ring-teal/50"
+                              className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base min-h-[80px]"
                               {...field} 
                             />
                           </div>
@@ -301,17 +282,17 @@ const AdmissionForm = () => {
                     )}
                   />
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="city"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">City *</FormLabel>
+                          <FormLabel className="text-sm font-medium">City *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter city" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-teal/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -325,11 +306,11 @@ const AdmissionForm = () => {
                       name="country"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Country *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Country *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter country" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-teal/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -341,25 +322,23 @@ const AdmissionForm = () => {
                 </div>
 
                 {/* Parent/Guardian Information */}
-                <div className="space-y-8">
-                  <div className="flex items-center space-x-3 pb-4 border-b border-gradient">
-                    <div className="w-12 h-12 bg-emerald rounded-2xl flex items-center justify-center">
-                      <User className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">Parent/Guardian Information</h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-center space-x-2 pb-2 border-b border-border/50">
+                    <User className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">Parent/Guardian Information</h3>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="parentName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Parent/Guardian Name *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Parent/Guardian Name *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter parent/guardian name" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -373,11 +352,11 @@ const AdmissionForm = () => {
                       name="parentOccupation"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Occupation *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Occupation *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter occupation" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-emerald/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -387,20 +366,20 @@ const AdmissionForm = () => {
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="parentEmail"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Parent Email *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Parent Email *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                               <Input 
                                 type="email"
                                 placeholder="Enter parent email" 
-                                className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
+                                className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
                                 {...field} 
                               />
                             </div>
@@ -415,14 +394,14 @@ const AdmissionForm = () => {
                       name="parentPhone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Parent Phone *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Parent Phone *</FormLabel>
                           <FormControl>
                             <div className="relative">
-                              <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+                              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                               <Input 
                                 type="tel"
                                 placeholder="Enter parent phone" 
-                                className="glass-effect border-0 rounded-2xl h-14 pl-12 text-base focus:ring-2 focus:ring-teal/50"
+                                className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
                                 {...field} 
                               />
                             </div>
@@ -435,25 +414,23 @@ const AdmissionForm = () => {
                 </div>
 
                 {/* Academic Information */}
-                <div className="space-y-8">
-                  <div className="flex items-center space-x-3 pb-4 border-b border-gradient">
-                    <div className="w-12 h-12 bg-teal rounded-2xl flex items-center justify-center">
-                      <GraduationCap className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">Academic Information</h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-center space-x-2 pb-2 border-b border-border/50">
+                    <GraduationCap className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">Academic Information</h3>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <FormField
                       control={form.control}
                       name="previousSchool"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Previous School *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Previous School *</FormLabel>
                           <FormControl>
                             <Input 
                               placeholder="Enter previous school name" 
-                              className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-teal/50"
+                              className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                               {...field} 
                             />
                           </FormControl>
@@ -467,10 +444,10 @@ const AdmissionForm = () => {
                       name="gradeApplying"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-base font-medium text-foreground">Grade Applying For *</FormLabel>
+                          <FormLabel className="text-sm font-medium">Grade Applying For *</FormLabel>
                           <FormControl>
                             <select 
-                              className="flex h-14 w-full rounded-2xl glass-effect border-0 px-4 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal/50 disabled:cursor-not-allowed disabled:opacity-50"
+                              className="flex h-10 sm:h-12 w-full rounded-xl border border-input/50 bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 glass-effect"
                               {...field}
                             >
                               <option value="">Select Grade</option>
@@ -499,11 +476,11 @@ const AdmissionForm = () => {
                     name="previousGPA"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-medium text-foreground">Previous GPA/Grades (Optional)</FormLabel>
+                        <FormLabel className="text-sm font-medium">Previous GPA/Grades (Optional)</FormLabel>
                         <FormControl>
                           <Input 
                             placeholder="Enter previous GPA or grade average" 
-                            className="glass-effect border-0 rounded-2xl h-14 text-base focus:ring-2 focus:ring-teal/50"
+                            className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                         </FormControl>
@@ -514,12 +491,10 @@ const AdmissionForm = () => {
                 </div>
 
                 {/* Additional Information */}
-                <div className="space-y-8">
-                  <div className="flex items-center space-x-3 pb-4 border-b border-gradient">
-                    <div className="w-12 h-12 bg-emerald rounded-2xl flex items-center justify-center">
-                      <FileText className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-foreground">Additional Information</h3>
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-center space-x-2 pb-2 border-b border-border/50">
+                    <FileText className="w-5 h-5 text-primary" />
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">Additional Information</h3>
                   </div>
 
                   <FormField
@@ -527,11 +502,11 @@ const AdmissionForm = () => {
                     name="extracurricular"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-medium text-foreground">Extracurricular Activities (Optional)</FormLabel>
+                        <FormLabel className="text-sm font-medium">Extracurricular Activities (Optional)</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="List any sports, clubs, hobbies, or activities you participate in" 
-                            className="glass-effect border-0 rounded-2xl pl-12 text-base min-h-[100px] focus:ring-2 focus:ring-teal/50"
+                            className="rounded-xl border-input/50 glass-effect text-sm sm:text-base min-h-[80px]"
                             {...field} 
                           />
                         </FormControl>
@@ -545,11 +520,11 @@ const AdmissionForm = () => {
                     name="specialNeeds"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-medium text-foreground">Special Needs or Accommodations (Optional)</FormLabel>
+                        <FormLabel className="text-sm font-medium">Special Needs or Accommodations (Optional)</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="Please describe any special needs, learning accommodations, or medical conditions we should be aware of" 
-                            className="glass-effect border-0 rounded-2xl pl-12 text-base min-h-[100px] focus:ring-2 focus:ring-teal/50"
+                            className="rounded-xl border-input/50 glass-effect text-sm sm:text-base min-h-[80px]"
                             {...field} 
                           />
                         </FormControl>
@@ -563,11 +538,11 @@ const AdmissionForm = () => {
                     name="motivation"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base font-medium text-foreground">Why do you want to join PISES? *</FormLabel>
+                        <FormLabel className="text-sm font-medium">Why do you want to join PISES? *</FormLabel>
                         <FormControl>
                           <Textarea 
                             placeholder="Please tell us why you want to join PISES and what you hope to achieve here (minimum 50 characters)" 
-                            className="glass-effect border-0 rounded-2xl pl-12 text-base min-h-[120px] focus:ring-2 focus:ring-teal/50"
+                            className="rounded-xl border-input/50 glass-effect text-sm sm:text-base min-h-[120px]"
                             {...field} 
                           />
                         </FormControl>
@@ -577,15 +552,12 @@ const AdmissionForm = () => {
                   />
                 </div>
 
-                <div className="text-center pt-8">
-                  <Button 
-                    type="submit" 
-                    className="btn-primary text-xl px-16 py-6 h-auto hover:shadow-glow transition-all duration-300 hover:scale-105 rounded-2xl"
-                  >
-                    <Zap className="w-6 h-6 mr-3" />
-                    Submit Application
-                  </Button>
-                </div>
+                <Button 
+                  type="submit" 
+                  className="w-full btn-primary text-base sm:text-lg py-4 sm:py-6 h-auto rounded-xl hover:shadow-glow transition-all duration-300 hover:scale-105"
+                >
+                  Submit Application
+                </Button>
               </form>
             </Form>
           </CardContent>
