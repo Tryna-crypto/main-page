@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -88,9 +89,12 @@ export default {
 				glow: 'var(--shadow-glow)'
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				lg: '1.25rem',
+				md: '1rem',
+				sm: '0.75rem',
+				xl: '1.5rem',
+				'2xl': '2rem',
+				'3xl': '2.5rem'
 			},
 			keyframes: {
 				'accordion-down': {

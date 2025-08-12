@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { GraduationCap, BookOpen, Users, ArrowRight, Calendar, Award, Globe } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -78,17 +79,17 @@ const QuickAccessCards: React.FC<QuickAccessCardsProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        {/* Modern Quick Access Cards */}
+        {/* Modern Glassmorphism Quick Access Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
           {cards.map((card, index) => (
             <Card 
               key={index}
-              className="feature-card group cursor-pointer animate-fade-in h-full"
+              className="feature-card group cursor-pointer animate-fade-in h-full rounded-3xl"
               onClick={() => onNavigate(card.page)}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="relative p-6 sm:p-8 h-full flex flex-col">
-                <div className={`w-12 h-12 sm:w-16 sm:h-16 ${card.color} rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:shadow-glow transition-all duration-300 group-hover:scale-110 flex-shrink-0`}>
+                <div className={`w-12 h-12 sm:w-16 sm:h-16 ${card.color} rounded-3xl flex items-center justify-center mb-4 sm:mb-6 group-hover:shadow-glow transition-all duration-400 group-hover:scale-110 flex-shrink-0`}>
                   <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
                 </div>
                 
@@ -103,7 +104,7 @@ const QuickAccessCards: React.FC<QuickAccessCardsProps> = ({ onNavigate }) => {
                 <ul className="space-y-2 mb-4 sm:mb-6 flex-shrink-0">
                   {card.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-xs sm:text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 group-hover:shadow-glow transition-all duration-300 flex-shrink-0"></div>
+                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 group-hover:shadow-glow transition-all duration-400 flex-shrink-0"></div>
                       {feature}
                     </li>
                   ))}
@@ -118,7 +119,7 @@ const QuickAccessCards: React.FC<QuickAccessCardsProps> = ({ onNavigate }) => {
           ))}
         </div>
 
-        {/* Modern Stats Section */}
+        {/* Modern Glassmorphism Stats Section */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {statsCards.map((stat, index) => (
             <AnimatedStatCard key={index} stat={stat} index={index} />
@@ -182,18 +183,18 @@ const AnimatedStatCard: React.FC<AnimatedStatCardProps> = ({ stat, index }) => {
   return (
     <Card 
       ref={cardRef}
-      className="glass-effect text-center border-0 shadow-elegant hover:shadow-hero transition-all duration-500 hover:-translate-y-1 animate-fade-in group rounded-2xl overflow-hidden"
+      className="glass-effect text-center border-0 shadow-elegant hover:shadow-hero transition-all duration-500 hover:-translate-y-2 animate-fade-in group rounded-3xl overflow-hidden"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       <CardContent className="relative p-4 sm:p-6">
         <div className="flex justify-center mb-3 sm:mb-4">
-          <stat.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
+          <stat.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color} group-hover:scale-110 transition-transform duration-400`} />
         </div>
-        <div className={`text-2xl sm:text-3xl font-bold text-foreground mb-2 group-hover:${stat.color} transition-colors duration-300`}>
+        <div className={`text-2xl sm:text-3xl font-bold text-foreground mb-2 group-hover:${stat.color} transition-colors duration-400`}>
           {count}{stat.suffix}
         </div>
-        <p className="text-xs sm:text-sm text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300 leading-tight">
+        <p className="text-xs sm:text-sm text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-400 leading-tight">
           {stat.label}
         </p>
       </CardContent>

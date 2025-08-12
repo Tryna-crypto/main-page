@@ -77,13 +77,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           }`}
           style={{ backgroundImage: `url(${slide.image})` }}
         >
-          {/* Modern dark overlay */}
+          {/* Modern glassmorphism overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40"></div>
           
           <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
             <div className="max-w-4xl text-foreground space-y-4 sm:space-y-6">
-              {/* Modern content container */}
-              <div className="modern-card bg-card/80 backdrop-blur-xl border-border/50 animate-fade-in">
+              {/* Modern glassmorphism content container */}
+              <div className="glass-container animate-fade-in">
                 <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-3 sm:mb-4 animate-slide-in-left text-foreground">
                   {slide.title}
                 </h1>
@@ -118,40 +118,40 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
         </div>
       ))}
 
-      {/* Modern Navigation Arrows */}
+      {/* Modern Glassmorphism Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 modern-card bg-card/80 backdrop-blur-xl border-border/50 flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 hover:shadow-glow"
+        className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-16 sm:h-16 glass-effect flex items-center justify-center text-foreground transition-all duration-400 hover:scale-110 hover:shadow-glow rounded-3xl"
       >
-        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
       </button>
       
       <button
         onClick={nextSlide}
-        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 modern-card bg-card/80 backdrop-blur-xl border-border/50 flex items-center justify-center text-foreground transition-all duration-300 hover:scale-110 hover:shadow-glow"
+        className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 sm:w-16 sm:h-16 glass-effect flex items-center justify-center text-foreground transition-all duration-400 hover:scale-110 hover:shadow-glow rounded-3xl"
       >
-        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
       </button>
 
-      {/* Modern Slide Indicators */}
-      <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-20 flex space-x-2 sm:space-x-3">
+      {/* Modern Glassmorphism Slide Indicators */}
+      <div className="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-20 flex space-x-3 sm:space-x-4">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+            className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-400 ${
               index === currentSlide 
                 ? 'bg-primary scale-125 shadow-glow' 
-                : 'bg-muted-foreground hover:bg-primary/75'
+                : 'bg-muted-foreground hover:bg-primary/75 hover:scale-110'
             }`}
           />
         ))}
       </div>
 
-      {/* Modern Scroll Indicator */}
+      {/* Modern Glassmorphism Scroll Indicator */}
       {!hasScrolled && (
         <div className="absolute bottom-6 sm:bottom-8 right-6 sm:right-8 z-20 text-muted-foreground text-xs sm:text-sm animate-bounce">
-          <div className="flex flex-col items-center space-y-2 modern-card bg-card/80 backdrop-blur-xl border-border/50 p-3 sm:p-4">
+          <div className="flex flex-col items-center space-y-2 glass-container p-3 sm:p-4 rounded-3xl">
             <span>Scroll</span>
             <div className="w-px h-6 sm:h-8 bg-muted-foreground"></div>
           </div>

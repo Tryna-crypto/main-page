@@ -23,9 +23,11 @@ const Index = () => {
     if (savedTheme === 'light') {
       setDarkMode(false);
       document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     } else {
       setDarkMode(true);
       document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
       localStorage.setItem('theme', 'dark');
     }
   }, []);
@@ -35,9 +37,11 @@ const Index = () => {
       const newMode = !prev;
       if (newMode) {
         document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
         localStorage.setItem('theme', 'dark');
       } else {
         document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
         localStorage.setItem('theme', 'light');
       }
       return newMode;
@@ -46,7 +50,22 @@ const Index = () => {
 
   const handleNavigate = (page: string) => {
     setCurrentPage(page);
+    // Auto scroll to top when navigating to a new page
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
   };
+
+  // Auto scroll to top effect when page changes
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }, [currentPage]);
 
   const renderPage = () => {
     switch (currentPage) {
