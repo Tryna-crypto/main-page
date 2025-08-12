@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { GraduationCap, BookOpen, Users, ArrowRight, Calendar, Award, Globe } from 'lucide-react';
+import { GraduationCap, BookOpen, Users, ArrowRight, Calendar, Award, Globe, Zap, Sparkles, Cpu } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 interface QuickAccessCardsProps {
@@ -12,26 +12,29 @@ const QuickAccessCards: React.FC<QuickAccessCardsProps> = ({ onNavigate }) => {
     {
       icon: GraduationCap,
       title: 'Admissions',
-      description: 'Start your journey with PISES. Learn about our admission process, requirements, and scholarships.',
-      color: 'bg-primary',
+      description: 'Join the future of education with our streamlined admission process and scholarship opportunities.',
+      color: 'from-neon-purple to-neon-pink',
       page: 'admissions',
-      features: ['Online Application', 'Scholarship Info', 'Campus Tours']
+      features: ['Smart Application', 'AI Matching', 'Virtual Tours'],
+      accent: 'neon-purple'
     },
     {
       icon: BookOpen,
       title: 'Academics',
-      description: 'Explore our comprehensive curriculum designed to prepare students for global success.',
-      color: 'bg-secondary',
+      description: 'Experience cutting-edge curriculum powered by AI and designed for the digital age.',
+      color: 'from-neon-blue to-neon-cyan',
       page: 'academics',
-      features: ['International Curriculum', 'Expert Faculty', 'Research Programs']
+      features: ['AI-Powered Learning', 'Global Curriculum', 'Expert Mentors'],
+      accent: 'neon-blue'
     },
     {
       icon: Users,
       title: 'Student Life',
-      description: 'Discover the vibrant community and exciting opportunities that await our students.',
-      color: 'bg-accent',
+      description: 'Immerse yourself in a vibrant community with endless opportunities for growth and connection.',
+      color: 'from-neon-pink to-neon-orange',
       page: 'student-life',
-      features: ['Clubs & Societies', 'Sports Teams', 'Cultural Events']
+      features: ['Digital Clubs', 'Virtual Events', 'Global Network'],
+      accent: 'neon-pink'
     }
   ];
 
@@ -40,87 +43,108 @@ const QuickAccessCards: React.FC<QuickAccessCardsProps> = ({ onNavigate }) => {
       icon: Award,
       number: 25,
       suffix: '+',
-      label: 'Years of Excellence',
-      color: 'text-primary'
+      label: 'Years Excellence',
+      color: 'text-neon-purple',
+      bgColor: 'from-neon-purple/20 to-neon-purple/5'
     },
     {
       icon: Globe,
       number: 95,
       suffix: '%',
-      label: 'University Acceptance',
-      color: 'text-primary'
+      label: 'Success Rate',
+      color: 'text-neon-pink',
+      bgColor: 'from-neon-pink/20 to-neon-pink/5'
     },
     {
       icon: Users,
       number: 1000,
       suffix: '+',
-      label: 'Happy Students',
-      color: 'text-primary'
+      label: 'Students',
+      color: 'text-neon-blue',
+      bgColor: 'from-neon-blue/20 to-neon-blue/5'
     },
     {
-      icon: Calendar,
+      icon: Cpu,
       number: 50,
       suffix: '+',
-      label: 'Extra-curricular Activities',
-      color: 'text-primary'
+      label: 'Tech Programs',
+      color: 'text-neon-cyan',
+      bgColor: 'from-neon-cyan/20 to-neon-cyan/5'
     }
   ];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-background relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/5 via-transparent to-neon-blue/5"></div>
+      
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-3 sm:mb-4 animate-fade-in">
-            Your Gateway to Excellence
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="inline-flex items-center px-6 py-3 rounded-full glass-card border-neon-purple/30 mb-6">
+            <Sparkles className="w-5 h-5 mr-2 text-neon-purple" />
+            <span className="font-mono text-muted-foreground">Your Digital Gateway</span>
+          </div>
+          
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
+            <span className="text-gradient">Excellence Redefined</span>
           </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-4xl mx-auto animate-fade-in px-4">
-            Discover the opportunities that await you at PISES. From world-class academics to vibrant student life.
+          
+          <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+            Step into the future of education with our revolutionary approach to learning and development.
           </p>
         </div>
 
-        {/* Modern Glassmorphism Quick Access Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-20">
+        {/* Main Feature Cards */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-20">
           {cards.map((card, index) => (
             <Card 
               key={index}
-              className="feature-card group cursor-pointer animate-fade-in h-full rounded-3xl"
+              className="feature-card group cursor-pointer animate-fade-in h-full rounded-4xl border-0 bg-transparent"
               onClick={() => onNavigate(card.page)}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <CardContent className="relative p-6 sm:p-8 h-full flex flex-col">
-                <div className={`w-12 h-12 sm:w-16 sm:h-16 ${card.color} rounded-3xl flex items-center justify-center mb-4 sm:mb-6 group-hover:shadow-glow transition-all duration-400 group-hover:scale-110 flex-shrink-0`}>
-                  <card.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary-foreground" />
+              <CardContent className="relative p-8 h-full flex flex-col glass-card rounded-4xl">
+                {/* Glow Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-4xl`}></div>
+                
+                {/* Icon */}
+                <div className={`relative w-16 h-16 bg-gradient-to-br ${card.color} rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:neon-glow transition-all duration-500`}>
+                  <card.icon className="w-8 h-8 text-white" />
                 </div>
                 
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4 group-hover:text-primary transition-colors">
+                {/* Content */}
+                <h3 className="text-2xl font-bold mb-4 group-hover:text-gradient transition-colors duration-300">
                   {card.title}
                 </h3>
                 
-                <p className="text-muted-foreground mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base flex-grow">
+                <p className="text-muted-foreground mb-6 leading-relaxed flex-grow">
                   {card.description}
                 </p>
 
-                <ul className="space-y-2 mb-4 sm:mb-6 flex-shrink-0">
+                {/* Features */}
+                <div className="space-y-3 mb-6">
                   {card.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-xs sm:text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 group-hover:shadow-glow transition-all duration-400 flex-shrink-0"></div>
+                    <div key={idx} className="flex items-center text-sm text-muted-foreground">
+                      <div className={`w-2 h-2 bg-${card.accent} rounded-full mr-3 group-hover:animate-neon-pulse`}></div>
                       {feature}
-                    </li>
+                    </div>
                   ))}
-                </ul>
+                </div>
 
-                <div className="flex items-center text-primary font-medium group-hover:text-primary-glow transition-colors text-sm sm:text-base">
-                  Learn More
-                  <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                {/* CTA */}
+                <div className="flex items-center text-primary font-medium group-hover:text-gradient transition-colors duration-300">
+                  <Zap className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+                  Explore Now
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Modern Glassmorphism Stats Section */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {statsCards.map((stat, index) => (
             <AnimatedStatCard key={index} stat={stat} index={index} />
           ))}
@@ -137,6 +161,7 @@ interface AnimatedStatCardProps {
     suffix: string;
     label: string;
     color: string;
+    bgColor: string;
   };
   index: number;
 }
@@ -183,18 +208,22 @@ const AnimatedStatCard: React.FC<AnimatedStatCardProps> = ({ stat, index }) => {
   return (
     <Card 
       ref={cardRef}
-      className="glass-effect text-center border-0 shadow-elegant hover:shadow-hero transition-all duration-500 hover:-translate-y-2 animate-fade-in group rounded-3xl overflow-hidden"
+      className="stat-card border-0 bg-transparent animate-fade-in group rounded-3xl overflow-hidden"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-      <CardContent className="relative p-4 sm:p-6">
-        <div className="flex justify-center mb-3 sm:mb-4">
-          <stat.icon className={`w-6 h-6 sm:w-8 sm:h-8 ${stat.color} group-hover:scale-110 transition-transform duration-400`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${stat.bgColor} opacity-50 group-hover:opacity-100 transition-opacity duration-500`}></div>
+      <CardContent className="relative p-6 text-center glass-card rounded-3xl">
+        <div className="flex justify-center mb-4">
+          <div className="w-12 h-12 glass-card rounded-2xl flex items-center justify-center group-hover:neon-glow transition-all duration-300">
+            <stat.icon className={`w-6 h-6 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
+          </div>
         </div>
-        <div className={`text-2xl sm:text-3xl font-bold text-foreground mb-2 group-hover:${stat.color} transition-colors duration-400`}>
+        
+        <div className={`text-3xl font-bold mb-2 group-hover:${stat.color} transition-colors duration-300 font-mono`}>
           {count}{stat.suffix}
         </div>
-        <p className="text-xs sm:text-sm text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-400 leading-tight">
+        
+        <p className="text-sm text-muted-foreground font-medium group-hover:text-foreground transition-colors duration-300">
           {stat.label}
         </p>
       </CardContent>
