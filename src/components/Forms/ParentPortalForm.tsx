@@ -88,14 +88,19 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
 
   if (isSignInMode) {
     return (
-      <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm">
-        <Card className="w-full max-w-md glass-effect border-0 shadow-elegant rounded-2xl">
+      <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-hero">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-primary/20 rounded-full animate-float"></div>
+          <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-primary/15 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/3 left-1/3 w-4 h-4 bg-primary/10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+        </div>
+        <Card className="relative w-full max-w-md glass-effect border-0 shadow-elegant rounded-2xl">
           <CardHeader className="text-center pb-4 sm:pb-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-              <User className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-glow animate-bounce-in">
+              <User className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
-            <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground">Sign In</CardTitle>
-            <p className="text-muted-foreground mt-2 text-sm sm:text-base">Access your parent portal</p>
+            <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground animate-fade-in">Sign In</CardTitle>
+            <p className="text-muted-foreground mt-2 text-sm sm:text-base animate-fade-in">Access your parent portal</p>
           </CardHeader>
           
           <CardContent className="p-4 sm:p-6 pt-0">
@@ -110,7 +115,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                       <FormControl>
                         <Input 
                           placeholder="22G149" 
-                          className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
+                          className="glass-effect rounded-xl border-primary/20 text-sm sm:text-base h-10 sm:h-12"
                           {...field} 
                         />
                       </FormControl>
@@ -130,7 +135,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                           <Input 
                             type={showPassword ? "text" : "password"}
                             placeholder="password123" 
-                            className="rounded-xl border-input/50 glass-effect pr-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect rounded-xl border-primary/20 pr-10 text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                           <button
@@ -178,14 +183,19 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm">
-      <Card className="w-full max-w-md sm:max-w-lg glass-effect border-0 shadow-elegant rounded-2xl">
+    <div className="min-h-screen flex items-center justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8 bg-gradient-hero">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/6 w-3 h-3 bg-primary/20 rounded-full animate-float"></div>
+        <div className="absolute top-1/3 right-1/4 w-2 h-2 bg-primary/15 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-4 h-4 bg-primary/10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+      </div>
+      <Card className="relative w-full max-w-md sm:max-w-lg glass-effect border-0 shadow-elegant rounded-2xl">
         <CardHeader className="text-center pb-4 sm:pb-6">
-          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
-            <User className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-glow animate-bounce-in">
+            <User className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
           </div>
-          <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground">Create Parent Account</CardTitle>
-          <p className="text-muted-foreground mt-2 text-sm sm:text-base">Set up your parent portal access</p>
+          <CardTitle className="text-2xl sm:text-3xl font-bold text-foreground animate-fade-in">Create Parent Account</CardTitle>
+          <p className="text-muted-foreground mt-2 text-sm sm:text-base animate-fade-in">Set up your parent portal access</p>
         </CardHeader>
         
         <CardContent className="p-4 sm:p-6 pt-0">
@@ -201,7 +211,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                       <FormControl>
                         <Input 
                           placeholder="Enter student ID" 
-                          className="rounded-xl border-input/50 glass-effect text-sm sm:text-base h-10 sm:h-12"
+                          className="glass-effect rounded-xl border-primary/20 text-sm sm:text-base h-10 sm:h-12"
                           {...field} 
                         />
                       </FormControl>
@@ -221,7 +231,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                           <Key className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                           <Input 
                             placeholder="Enter code" 
-                            className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect rounded-xl border-primary/20 pl-10 text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                         </div>
@@ -243,7 +253,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                         <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                         <Input 
                           placeholder="Enter your full name" 
-                          className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                          className="glass-effect rounded-xl border-primary/20 pl-10 text-sm sm:text-base h-10 sm:h-12"
                           {...field} 
                         />
                       </div>
@@ -266,7 +276,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                           <Input 
                             type="email" 
                             placeholder="Enter email" 
-                            className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect rounded-xl border-primary/20 pl-10 text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                         </div>
@@ -288,7 +298,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                           <Input 
                             type="tel" 
                             placeholder="Enter phone" 
-                            className="rounded-xl border-input/50 glass-effect pl-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect rounded-xl border-primary/20 pl-10 text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                         </div>
@@ -311,7 +321,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                           <Input 
                             type={showPassword ? "text" : "password"}
                             placeholder="Create password" 
-                            className="rounded-xl border-input/50 glass-effect pr-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect rounded-xl border-primary/20 pr-10 text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                           <button
@@ -339,7 +349,7 @@ const ParentPortalForm: React.FC<ParentPortalFormProps> = ({ onSignIn }) => {
                           <Input 
                             type={showConfirmPassword ? "text" : "password"}
                             placeholder="Confirm password" 
-                            className="rounded-xl border-input/50 glass-effect pr-10 text-sm sm:text-base h-10 sm:h-12"
+                            className="glass-effect rounded-xl border-primary/20 pr-10 text-sm sm:text-base h-10 sm:h-12"
                             {...field} 
                           />
                           <button
